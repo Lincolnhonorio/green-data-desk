@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const projectsData = [
   {
     title: "DASHBOARD DE RH",
     description: "Dashboard completo de análise de Recursos Humanos com indicadores de turnover, absenteísmo, performance e gestão de talentos. Visualizações interativas para apoiar decisões estratégicas na área de pessoas.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    link: "https://github.com/Lincolnhonorio/PortifoliodeProjetos/tree/main/Projeto_HR_Analyst"
+    link: "https://github.com/Lincolnhonorio/PortifoliodeProjetos/blob/main/Projeto_HR_Analyst/Portifolio.pdf"
   },
   {
     title: "Portfólio de Projetos",
@@ -23,12 +24,14 @@ const projectsData = [
 ];
 
 const Projects = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 md:py-32 px-4 md:px-8 bg-secondary/30">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3">
           <span className="text-primary">|</span>
-          <span>Explore alguns projetos que já desenvolvi:</span>
+          <span>{t.projects.title}</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -59,7 +62,7 @@ const Projects = () => {
                   asChild
                 >
                   <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    Ver detalhes
+                    {t.projects.button}
                     <ExternalLink className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
                   </a>
                 </Button>

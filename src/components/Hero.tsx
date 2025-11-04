@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import profileImage from "@/assets/lincoln-profile.jpg";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -24,9 +28,7 @@ const Hero = () => {
             </div>
             
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-              Data Analyst - Desenvolvo dashboards interativos e automatizados para áreas de{" "}
-              <span className="text-primary font-semibold">Finanças</span> e{" "}
-              <span className="text-primary font-semibold">RH</span>
+              {t.hero.subtitle}
             </p>
 
             <Button
@@ -34,7 +36,7 @@ const Hero = () => {
               onClick={() => scrollToSection("sobre-mim")}
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-primary/25 transition-all duration-300 group"
             >
-              Sobre mim
+              {t.hero.button}
               <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
             </Button>
           </div>
@@ -45,7 +47,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-glow" />
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+                  src={profileImage}
                   alt="Lincoln Honorio"
                   className="w-full h-full object-cover"
                 />

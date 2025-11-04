@@ -1,35 +1,22 @@
 import { TrendingUp, BarChart4, Workflow } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const servicesData = [
-  {
-    icon: TrendingUp,
-    title: "Análise de Dados e Aprimoramento na área de negócios",
-    description: "Transformo dados brutos em insights estratégicos para otimizar processos e aumentar a eficiência operacional."
-  },
-  {
-    icon: BarChart4,
-    title: "Desenvolvimento de Dashboards de Dados",
-    description: "Criação de dashboards interativos e automatizados com visualizações claras para tomada de decisão rápida e assertiva."
-  },
-  {
-    icon: Workflow,
-    title: "Aplicação de melhores práticas na Área de Dados - Extrair, Transformar e Carregar",
-    description: "Implementação de pipelines ETL eficientes para garantir qualidade, integridade e disponibilidade dos dados."
-  }
-];
+const servicesIcons = [TrendingUp, BarChart4, Workflow];
 
 const Services = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 md:py-32 px-4 md:px-8">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
           <span className="text-primary">|</span>
-          <span>Como posso te ajudar</span>
+          <span>{t.services.title}</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {servicesData.map((service, index) => {
-            const Icon = service.icon;
+          {t.services.items.map((service, index) => {
+            const Icon = servicesIcons[index];
             return (
               <div
                 key={index}

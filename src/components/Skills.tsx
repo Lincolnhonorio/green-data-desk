@@ -1,40 +1,22 @@
 import { BarChart3, Database, Server, TrendingUp } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const skillsData = [
-  {
-    icon: BarChart3,
-    title: "Visualização & Análise de Dados com Power BI",
-    description: "Criação de dashboards interativos e relatórios automatizados para tomada de decisão estratégica."
-  },
-  {
-    icon: Database,
-    title: "SQL voltado para Dados",
-    description: "Extração e manipulação de grandes volumes de dados com queries otimizadas e eficientes."
-  },
-  {
-    icon: Server,
-    title: "Entendimento e Uso de Sistemas ERP",
-    description: "Integração e análise de dados provenientes de sistemas corporativos para gestão empresarial."
-  },
-  {
-    icon: TrendingUp,
-    title: "Finanças/RH",
-    description: "Expertise em indicadores financeiros e de recursos humanos para otimização de processos."
-  }
-];
+const skillsIcons = [BarChart3, Database, Server, TrendingUp];
 
 const Skills = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 md:py-32 px-4 md:px-8">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
           <span className="text-primary">|</span>
-          <span>Principais Habilidades</span>
+          <span>{t.skills.title}</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillsData.map((skill, index) => {
-            const Icon = skill.icon;
+          {t.skills.items.map((skill, index) => {
+            const Icon = skillsIcons[index];
             return (
               <div
                 key={index}
